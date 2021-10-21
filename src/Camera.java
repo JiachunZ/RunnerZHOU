@@ -1,23 +1,22 @@
 public class Camera {
-    private String x;
-    private String y;
-    private String cameraL;
+    private double x;
+    private double y;
+    private double cameraL;
 
 
-    public String getX() {
+    public double getX() {
         return x;
     }
-    public String getY(){
+    public double getY(){
         return y;
     }
-    public String getCameraL(){
+    public double getCameraL(){
         return cameraL;
     }
-    public Camera (String x, String y,String camL){
+    public Camera (double x, double y,double camL){
         this.x=x;
         this.y=y;
         this.cameraL=camL;
-
     }
 
     @Override

@@ -13,23 +13,30 @@ public class HelloWorld extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Demo");
         Group root = new Group();
-        Scene scene = new Scene(root, 800, 400);
-        primaryStage.setScene(scene);
+        //Scene scene = new Scene(root, 800, 400);
+        //primaryStage.setScene(scene);
+        //primaryStage.show();
+
+        GameScene gs = new GameScene(root,400,0,100,1100);
+
+        primaryStage.setScene(gs);
         primaryStage.show();
+
 
         Heros run1 = new Heros(20,0,65,100);
         ImageView sprite1 = run1.getSprit();
         sprite1.setX(200);
         sprite1.setY(250);
-
+        root.getChildren().addAll(sprite1);
+/*
         Heros run2 = new Heros (85,0,85,100);
         ImageView sprite2 = run2.getSprit();
         sprite2.setX(400);
         sprite2.setY(250);
 
         root.getChildren().addAll(imageviewSceneLeft);
-        root.getChildren().addAll(sprite1);
-        root.getChildren().addAll(sprite2);
+        root.getChildren().addAll(sprite2);*/
+
     }
 
 

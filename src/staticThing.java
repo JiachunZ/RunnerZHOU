@@ -1,6 +1,5 @@
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
-import javafx.geometry.Rectangle2D;
 
 public class staticThing {
 

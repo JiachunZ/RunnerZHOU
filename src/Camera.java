@@ -1,6 +1,7 @@
 public class Camera {
     private String x;
     private String y;
+    private String cameraL;
 
 
     public String getX() {
@@ -9,9 +10,14 @@ public class Camera {
     public String getY(){
         return y;
     }
-    public Camera (String x, String y){
+    public String getCameraL(){
+        return cameraL;
+    }
+    public Camera (String x, String y,String camL){
         this.x=x;
         this.y=y;
+        this.cameraL=camL;
+
     }
 
     @Override

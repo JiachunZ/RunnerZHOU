@@ -1,6 +1,5 @@
 import javafx.application.Application;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,19 +16,20 @@ public class HelloWorld extends Application {
         //primaryStage.setScene(scene);
         //primaryStage.show();
 
-        GameScene gs = new GameScene(root,400,0,100,1100);
+        GameScene gs = new GameScene(root,300,0,1200);
 
         primaryStage.setScene(gs);
         primaryStage.show();
 
 
-        Heros run1 = new Heros(20,0,65,100);
-        ImageView sprite1 = run1.getSprit();
+/*
+        Heros run1 = new Heros(20,0,75,100,1);
+        ImageView sprite1 = run1.getSprite();
         sprite1.setX(200);
         sprite1.setY(250);
         root.getChildren().addAll(sprite1);
-/*
-        Heros run2 = new Heros (85,0,85,100);
+
+        Heros run2 = new Heros (85,0,75,100);
         ImageView sprite2 = run2.getSprit();
         sprite2.setX(400);
         sprite2.setY(250);

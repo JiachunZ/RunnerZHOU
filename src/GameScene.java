@@ -1,3 +1,4 @@
+import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.geometry.Rectangle2D;
@@ -7,15 +8,25 @@ public class GameScene extends Scene {
     private Camera cam;
     private staticThing left;
     private staticThing right;
-   // private Heros myHero;
+    private Heros myHero;
 
-    public GameScene (Group g,double camX,double camY,double camL,double sceneL){
+    /***************** getter *************************************************/
+
+    public staticThing getLeft(){
+        return left;
+    }
+
+    /***************** Constructeur *************************************************/
+
+    public GameScene (Group g,double camX,double camY,double sceneL){
         super(g,600,400);
-        
         this.left = new staticThing("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\desert.png",0,0);
-        this.right = new staticThing("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\desert.png",1000,0);
-        this.cam = new Camera (camX,camY,camL);
-        //this.myHero = new Heros ();
+        this.right = new staticThing("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\desert.png",800,0);
+        this.cam = new Camera (camX,camY);
+        this.myHero = new Heros (200,250,75,100,1);
+
+        //update();
+
 
         double offset = sceneL%800;  //la longueur restante pour remplir la scène à gauche
         left.getImV().setViewport(new Rectangle2D (800-offset,0,800,400));
@@ -31,17 +42,34 @@ public class GameScene extends Scene {
             i++;
             g.getChildren().addAll(right.getImV());
         }
+
+
+        timer.start();
     }
-/*void render(){
-        double offset = left.getX()
 
 
-        double offsetLeft = left.getImV().getX()%this.cam.getX();
-    left.getImV().setViewport(new Rectangle2D(offsetLeft,0,left.getImV().getX()-offsetLeft,left.getImV().getY()));
-     % donne le reste de la division entière
-    //définition de gamescene puis mettre hero
-}*/
-public staticThing getLeft(){
-        return left;
-}
+    /***************** Mise-à-jour *************************************************/
+    /*void update(){
+        //double offset = left.getImV().getX()%cam.getCAMx();
+        //left.getImV().setViewport(new Rectangle2D(offset,0,left.getImV().getX()-offset,left.getImV().getY()));
+     //% donne le reste de la division entière
+        double offset = 800-cam.getCAMx();
+        left.getImV().setViewport(new Rectangle2D(offset,0,800-offset,left.getImV().getY()));
+        right.getImV().setViewport(new Rectangle2D(0,0,offset,right.getImV().getY()));
+        left.getImV().setX(-cam.getCAMx());
+        left.getImV().setY(0);
+        right.getImV().setX(800-cam.getCAMx());
+        right.getImV().setY(0);
+    }*/
+
+
+
+
+    AnimationTimer timer = new AnimationTimer() {
+        @Override
+        public void handle(long time) {
+            myHero.update();
+        }
+    };
+
 }

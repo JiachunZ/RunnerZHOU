@@ -17,7 +17,7 @@ public class staticThing {
     }
 
     public ImageView getImV (){return imV;}
-    public double getX(){return x;}
-    public double getY(){return y;}
+    public double getSTx(){return x;}
+    public double getSTy(){return y;}
 
 }

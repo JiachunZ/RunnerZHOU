@@ -22,8 +22,8 @@ public class HelloWorld extends Application {
         primaryStage.show();
 
 
-/*
-        Heros run1 = new Heros(20,0,75,100,1);
+
+ /*       Heros run1 = new Heros(20,0,75,100,1);
         ImageView sprite1 = run1.getSprite();
         sprite1.setX(200);
         sprite1.setY(250);

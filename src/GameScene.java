@@ -23,7 +23,7 @@ public class GameScene extends Scene {
         this.left = new staticThing("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\desert.png",0,0);
         this.right = new staticThing("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\desert.png",800,0);
         this.cam = new Camera (camX,camY);
-        this.myHero = new Heros (200,250,75,100,1);
+        this.myHero = new Heros (200,250,75,100);
 
         //update();
 
@@ -45,6 +45,9 @@ public class GameScene extends Scene {
 
 
         timer.start();
+        myHero.getSprite().setX(200);
+        myHero.getSprite().setY(250);
+        g.getChildren().addAll(myHero.getSprite());
     }
 
 

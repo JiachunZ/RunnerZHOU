@@ -15,11 +15,11 @@ public class HelloWorld extends Application {
         //Scene scene = new Scene(root, 800, 400);
         //primaryStage.setScene(scene);
         //primaryStage.show();
+        primaryStage.show();
 
         GameScene gs = new GameScene(root,300,0,1200);
-
         primaryStage.setScene(gs);
-        primaryStage.show();
+
 
 
 

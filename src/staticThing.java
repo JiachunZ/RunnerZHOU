@@ -20,4 +20,11 @@ public class staticThing {
     public double getSTx(){return x;}
     public double getSTy(){return y;}
 
+    void update(){
+
+        GameScene.setLeft();
+        GameScene.setRight();
+
+    }
+
 }

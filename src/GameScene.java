@@ -2,53 +2,64 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.image.Image;
 
 
 public class GameScene extends Scene {
     private Camera cam;
-    private staticThing left;
-    private staticThing right;
-    private Heros myHero;
+    private static staticThing left= new staticThing("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\desert.png",0,0);
+    private static staticThing right= new staticThing("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\desert.png",800,0);
+    private double sceneL;
+    private static Heros myHero = new Heros (200,250,75,100,10,0);
 
     /***************** getter *************************************************/
 
     public staticThing getLeft(){
         return left;
     }
+    public double getSceneL(){ return sceneL;}
+
+
+
+
+    /***************** setter *************************************************/
+
+    public static void setLeft(){
+        //double offset = 800-myHero.getHx();  //la longueur restante pour remplir la scène à gauche
+        left.getImV().setViewport(new Rectangle2D (myHero.getHx()%800,0,800,400));
+        left.getImV().setX(0);
+        left.getImV().setY(0);
+
+    }
+    public static void setRight(){
+        double offset = myHero.getHx()%800;  //la longueur restante pour remplir la scène à gauche
+        right.getImV().setViewport(new Rectangle2D (0,0,offset,400));
+        right.getImV().setX(800-offset);
+        right.getImV().setY(0);
+    }
+
 
     /***************** Constructeur *************************************************/
 
     public GameScene (Group g,double camX,double camY,double sceneL){
         super(g,600,400);
-        this.left = new staticThing("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\desert.png",0,0);
-        this.right = new staticThing("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\desert.png",800,0);
         this.cam = new Camera (camX,camY);
-        this.myHero = new Heros (200,250,75,100);
+        this.sceneL = sceneL;
 
-        //update();
-
-
-        double offset = sceneL%800;  //la longueur restante pour remplir la scène à gauche
-        left.getImV().setViewport(new Rectangle2D (800-offset,0,800,400));
-        left.getImV().setX(0);
-        left.getImV().setY(0);
-        g.getChildren().addAll(left.getImV());
-
-        double nbDeserts = (sceneL-offset)/800;
-        double i = 0;
-        while (i<nbDeserts){
-            right.getImV().setX(offset+i*800);
-            right.getImV().setY(0);
-            i++;
-            g.getChildren().addAll(right.getImV());
-        }
 
 
         timer.start();
-        myHero.getSprite().setX(200);
-        myHero.getSprite().setY(250);
+        g.getChildren().addAll(left.getImV());
+        g.getChildren().addAll(right.getImV());
+        myHero.getSprite().setViewport(new Rectangle2D(myHero.getHindX(), 0, 75, 100));
         g.getChildren().addAll(myHero.getSprite());
+
     }
+
+    public static void myHero(){
+        myHero.getSprite().setViewport(new Rectangle2D(myHero.getHindX(), 0, 75, 100));
+    }
+
 
 
     /***************** Mise-à-jour *************************************************/
@@ -66,11 +77,11 @@ public class GameScene extends Scene {
     }*/
 
 
-
-
-    AnimationTimer timer = new AnimationTimer() {
+    static AnimationTimer timer = new AnimationTimer() {
         @Override
         public void handle(long time) {
+            left.update();
+            right.update();
             myHero.update();
         }
     };

@@ -54,6 +54,7 @@ public class GameScene extends Scene {
         myHero.getSprite().setViewport(new Rectangle2D(myHero.getHindX(), 0, 75, 100));
         g.getChildren().addAll(myHero.getSprite());
 
+
     }
 
     public static void myHero(){
@@ -81,8 +82,7 @@ public class GameScene extends Scene {
         @Override
         public void handle(long time) {
             left.update();
-            right.update();
-            myHero.update();
+            myHero.update(time);
         }
     };
 

@@ -10,6 +10,8 @@ public class Heros /*extends AnimatedThing */{
     private double indX;
     private ImageView sprite;
     private static Image spriteSheet = new Image("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\heros.png");
+    private static long timeAv;
+
 
     /*public Heros(double x, double y, int width, int height, Integer attitude) {
         super(x, y, width, height, attitude);
@@ -47,21 +49,61 @@ public class Heros /*extends AnimatedThing */{
             x1 = 20;
             a.getAimV().setViewport(new Rectangle2D(x1, y1, 75, 100));
         }*/
-    void update() {
+
+
+    void update(long time) {
         GameScene.myHero();
         double x1 = this.getHindX();
-        if (x1 < 500) {
-            x1 = x1 + 85;
-            this.setHx(this.getHx()+5);
-            this.setHindX(x1);
-        } else {
-            x1 = 10;
-            this.setHx(this.getHx()+5);
-            this.setHindX(x1);
+
+        if ((time-getTimeAv())>30000000){
+            if (x1 < 460) {
+                x1 = x1+85;
+                this.setHx(this.getHx()+5);
+                this.setHindX(x1);
+            } else {
+                x1 = 10;
+                this.setHx(this.getHx()+5);
+                this.setHindX(x1);
+            }
+        } else{
+            if (x1 < 460) {
+                x1 = x1;
+                this.setHx(this.getHx()+5);
+                this.setHindX(x1);
+            } else {
+                x1 = 10;
+                this.setHx(this.getHx()+5);
+                this.setHindX(x1);
+            }
+        }
+        this.setTimeAv(time);
     }
 
+    /*void update() {
+        GameScene.myHero();
+        double x1 = this.getHindX();
 
+            if (x1 < 500) {
+                x1 = x1 + 85;
+                this.setHx(this.getHx()+5);
+                this.setHindX(x1);
+            } else {
+                x1 = 10;
+                this.setHx(this.getHx()+5);
+                this.setHindX(x1);
+            };
+    }*/
+
+
+
+
+    public static void setTimeAv(long timeAv) {
+        Heros.timeAv = timeAv;
     }
+    public static long getTimeAv(){
+        return timeAv;
+    }
+
 
     public double getHx() {
         return x;

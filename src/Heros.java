@@ -58,21 +58,21 @@ public class Heros /*extends AnimatedThing */{
         if ((time-getTimeAv())>30000000){
             if (x1 < 460) {
                 x1 = x1+85;
-                this.setHx(this.getHx()+5);
+                this.setHx(this.getHx()+3);
                 this.setHindX(x1);
             } else {
                 x1 = 10;
-                this.setHx(this.getHx()+5);
+                this.setHx(this.getHx()+3);
                 this.setHindX(x1);
             }
         } else{
             if (x1 < 460) {
                 x1 = x1;
-                this.setHx(this.getHx()+5);
+                this.setHx(this.getHx()+3);
                 this.setHindX(x1);
             } else {
                 x1 = 10;
-                this.setHx(this.getHx()+5);
+                this.setHx(this.getHx()+3);
                 this.setHindX(x1);
             }
         }
@@ -116,6 +116,11 @@ public class Heros /*extends AnimatedThing */{
     }
     public double getHindX() {
         return indX;
+    }
+
+
+    void jump(){
+
     }
 
 }

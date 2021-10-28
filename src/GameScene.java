@@ -53,7 +53,10 @@ public class GameScene extends Scene {
         g.getChildren().addAll(right.getImV());
         myHero.getSprite().setViewport(new Rectangle2D(myHero.getHindX(), 0, 75, 100));
         g.getChildren().addAll(myHero.getSprite());
-
+        this.setOnMouseClicked((event)->{
+            System.out.println("Jump");
+            myHero.jump();
+        })
 
     }
 
@@ -85,5 +88,7 @@ public class GameScene extends Scene {
             myHero.update(time);
         }
     };
+
+
 
 }

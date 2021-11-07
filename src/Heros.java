@@ -35,7 +35,6 @@ public class Heros /*extends AnimatedThing */{
     void update(long time) {
         GameScene.getMyHero();
         double x1 = this.getHindX();
-        this.setHindY(0);
 
         if ((time-getTimeAv())>66000000){
             if (x1 < 460) {
@@ -63,21 +62,31 @@ public class Heros /*extends AnimatedThing */{
 
     void jump(){
         GameScene.getMyHero();
-        double indX = this.getHindX();
+        double indX = 0;
         double indY = this.getHindY();
         double x = this.getHx();
         double y = this.getHy();
-        long time = this.getTimeAv();
-        if ((time-getTimeAv())>66000000) {
-            this.setHx(x + 3);
+
+        if (indY<150 && indX<150) {
+            this.setHx(x+3);
             this.setHindX(indX);
-            this.setHy(y + 10);
+            this.setHy(y-50);
             this.setHindY(indY + 160);
+            this.sprite.setY(this.getHy());
+        } else {
+            this.setHindX(0);
+            this.setHindY(0);
+            this.setHx(x+3);
+            this.setHy(y+50);
+            this.sprite.setY(this.getHy());
+
         }
+
+
     }
 
 
-    /***************** setter et getter *************************************************/
+    /***************** setter *************************************************/
     public static void setTimeAv(long timeAv) {
         Heros.timeAv = timeAv;
     }
@@ -95,7 +104,7 @@ public class Heros /*extends AnimatedThing */{
     }
 
 
-
+    /***************** getter *************************************************/
     public ImageView getSprite() {
         return sprite;
     }
@@ -104,15 +113,9 @@ public class Heros /*extends AnimatedThing */{
         return timeAv;
     }
     public double getHindY() { return indY;}
-    public double getHindX() {
-        return indX;
-    }
-    public double getHx() {
-        return x;
-    }
-    public double getHy() {
-        return y;
-    }
+    public double getHindX() { return indX;}
+    public double getHx() { return x;}
+    public double getHy() { return y;}
     }
 
 

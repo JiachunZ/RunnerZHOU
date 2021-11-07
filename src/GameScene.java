@@ -51,16 +51,18 @@ public class GameScene extends Scene {
         this.sceneL = sceneL;
 
         timer.start();
+        this.setOnMouseClicked((event)->{
+            System.out.println("Jump");
+            myHero.jump();
+        });
+
+
         g.getChildren().addAll(left.getImV());
         g.getChildren().addAll(right.getImV());
         myHero.getSprite().setViewport(new Rectangle2D(myHero.getHindX(), myHero.getHindY(), 75, 100));
         g.getChildren().addAll(myHero.getSprite());
 
 
-        this.setOnMouseClicked((event)->{
-            System.out.println("Jump");
-            myHero.jump();
-        });
 
 
     }

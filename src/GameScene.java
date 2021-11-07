@@ -38,6 +38,10 @@ public class GameScene extends Scene {
         right.getImV().setY(0);
     }
 
+    public static void getMyHero(){
+        myHero.getSprite().setViewport(new Rectangle2D(myHero.getHindX(), myHero.getHindY(), 75, 100));
+    }
+
 
     /***************** Constructeur *************************************************/
 
@@ -46,12 +50,10 @@ public class GameScene extends Scene {
         this.cam = new Camera (camX,camY);
         this.sceneL = sceneL;
 
-
-
         timer.start();
         g.getChildren().addAll(left.getImV());
         g.getChildren().addAll(right.getImV());
-        myHero.getSprite().setViewport(new Rectangle2D(myHero.getHindX(), 0, 75, 100));
+        myHero.getSprite().setViewport(new Rectangle2D(myHero.getHindX(), myHero.getHindY(), 75, 100));
         g.getChildren().addAll(myHero.getSprite());
 
 
@@ -60,27 +62,14 @@ public class GameScene extends Scene {
             myHero.jump();
         });
 
+
     }
 
-    public static void myHero(){
-        myHero.getSprite().setViewport(new Rectangle2D(myHero.getHindX(), 0, 75, 100));
-    }
+
 
 
 
     /***************** Mise-à-jour *************************************************/
-    /*void update(){
-        //double offset = left.getImV().getX()%cam.getCAMx();
-        //left.getImV().setViewport(new Rectangle2D(offset,0,left.getImV().getX()-offset,left.getImV().getY()));
-     //% donne le reste de la division entière
-        double offset = 800-cam.getCAMx();
-        left.getImV().setViewport(new Rectangle2D(offset,0,800-offset,left.getImV().getY()));
-        right.getImV().setViewport(new Rectangle2D(0,0,offset,right.getImV().getY()));
-        left.getImV().setX(-cam.getCAMx());
-        left.getImV().setY(0);
-        right.getImV().setX(800-cam.getCAMx());
-        right.getImV().setY(0);
-    }*/
 
 
     static AnimationTimer timer = new AnimationTimer() {

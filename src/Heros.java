@@ -8,17 +8,19 @@ public class Heros /*extends AnimatedThing */{
     private double y;
     private double indY;
     private double indX;
+    private double maxIndX;
     private ImageView sprite;
     private static Image spriteSheet = new Image("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\heros.png");
     private static long timeAv;
 
     /***************** constructeur *************************************************/
 
-    public Heros (double x, double y,int width,int height,double indX,double indY){
+    public Heros (double x, double y,int width,int height,double indX,double indY,double maxIndX){
         this.x=x;
         this.y=y;
         this.indX= indX;
         this.indY= indY;
+        this.maxIndX = maxIndX;
         this.sprite= new ImageView(spriteSheet);
         sprite.setViewport(new Rectangle2D(indX,indY,width,height));
         sprite.setX(x);
@@ -33,53 +35,97 @@ public class Heros /*extends AnimatedThing */{
     /***************** Mise-à-jour *************************************************/
 
     void update(long time) {
-        GameScene.getMyHero();
+        GameScene.setMyHero();
         double x1 = this.getHindX();
+        double maxIndX = this.getMaxIndX();
 
-        if ((time-getTimeAv())>66000000){
-            if (x1 < 460) {
-                x1 = x1+85;
-                this.setHx(this.getHx()+3);
-                this.setHindX(x1);
-            } else {
-                x1 = 10;
-                this.setHx(this.getHx()+3);
-                this.setHindX(x1);
+        if (maxIndX == 460){
+            if ((time-getTimeAv())>66000000){  //66000000
+                if (x1 < maxIndX) {
+                    x1 = x1+85;
+                    this.setHx(this.getHx()+3);
+                    this.setHindX(x1);
+                } else {
+                    x1 = 10;
+                    this.setHx(this.getHx()+3);
+                    this.setHindX(x1);
+                }
+                this.setTimeAv(time);
+            } else{
+                if (x1 < maxIndX) {
+                    x1 = x1;
+                    this.setHx(this.getHx()+3);
+                    this.setHindX(x1);
+                } else {
+                    x1 = 10;
+                    this.setHx(this.getHx()+3);
+                    this.setHindX(x1);
+                }
             }
-            this.setTimeAv(time);
-        } else{
-            if (x1 < 460) {
-                x1 = x1;
-                this.setHx(this.getHx()+3);
-                this.setHindX(x1);
-            } else {
-                x1 = 10;
-                this.setHx(this.getHx()+3);
-                this.setHindX(x1);
+
+        } else if (maxIndX == 310){
+            if ((time-getTimeAv())>100000000){
+
+                if (x1 < 170) {
+                    x1 = x1 + 85;
+                    this.setHx(this.getHx() + 3);
+                    this.setHindX(x1);
+                    this.setHy(this.getHy()-25);
+                    this.sprite.setY(this.getHy());
+                } else if(x1<maxIndX && 170<x1){
+                    x1 = x1+85;
+                    this.setHx(this.getHx()+3);
+                    this.setHindX(x1);
+                    this.setHy(this.getHy()+25);
+                    this.sprite.setY(this.getHy());
+                } else if (x1>maxIndX){
+                //} else{
+                    x1 = 10;
+                    this.setHx(this.getHx()+3);
+                    this.setHindX(x1);
+                    this.setMaxIndX(460);
+                    this.setHindY(0);
+                    this.setHy(250);
+                    this.sprite.setY(this.getHy());
+                }
+                this.setTimeAv(time);
+            } else{
+                if (x1 < maxIndX) {
+                    x1 = x1;
+                    this.setHx(this.getHx() + 3);
+                    this.setHindX(x1);
+
+                } else {
+                    x1 = 10;
+                    this.setHx(this.getHx()+3);
+                    this.setHindX(x1);
+                    this.setMaxIndX(460);
+                    this.setHindY(0);
+                    this.setHy(this.getHy()+25);
+                    this.sprite.setY(this.getHy());
+                }
             }
         }
     }
 
+
     void jump(){
-        GameScene.getMyHero();
-        double indX = 0;
+        GameScene.setMyHero();
+        double indX = 10;
         double indY = this.getHindY();
         double x = this.getHx();
         double y = this.getHy();
 
-        if (indY<150 && indX<150) {
-            this.setHx(x+3);
-            this.setHindX(indX);
-            this.setHy(y-50);
-            this.setHindY(indY + 160);
-            this.sprite.setY(this.getHy());
-        } else {
-            this.setHindX(0);
-            this.setHindY(0);
-            this.setHx(x+3);
-            this.setHy(y+50);
-            this.sprite.setY(this.getHy());
 
+        if (indY<150 ) {
+
+            //this.setHx(x+3);
+            this.setHindX(indX);
+            this.setHy(y-25);
+            this.setHindY(indY + 160);
+
+            this.setMaxIndX(310);
+            this.sprite.setY(this.getHy());
         }
 
 
@@ -102,20 +148,33 @@ public class Heros /*extends AnimatedThing */{
     public void setHy(double y) {
         this.y= y;
     }
+    public void setMaxIndX(double max){
+        this.maxIndX=max;
+    }
 
 
     /***************** getter *************************************************/
     public ImageView getSprite() {
         return sprite;
     }
-
     public static long getTimeAv(){
         return timeAv;
     }
-    public double getHindY() { return indY;}
-    public double getHindX() { return indX;}
-    public double getHx() { return x;}
-    public double getHy() { return y;}
+    public double getHindY() {
+        return indY;
+    }
+    public double getHindX() {
+        return indX;
+    }
+    public double getHx() {
+        return x;
+    }
+    public double getHy() {
+        return y;
+    }
+    public double getMaxIndX(){
+        return maxIndX;
+    }
     }
 
 

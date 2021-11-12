@@ -9,8 +9,11 @@ public class GameScene extends Scene {
     private Camera cam;
     private static staticThing left= new staticThing("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\desert.png",0,0);
     private static staticThing right= new staticThing("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\desert.png",800,0);
+    private static staticThing life1 = new staticThing ("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\heart.png",30,30);
+    private static staticThing life2 = new staticThing ("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\heart.png",30,30);
+    private static staticThing life3 = new staticThing ("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\heart.png",30,30);
     private double sceneL;
-    private static Heros myHero = new Heros (200,250,75,100,10,0);
+    private static Heros myHero = new Heros (200,250,75,100,10,0,460);
 
     /***************** getter *************************************************/
 
@@ -38,7 +41,7 @@ public class GameScene extends Scene {
         right.getImV().setY(0);
     }
 
-    public static void getMyHero(){
+    public static void setMyHero(){
         myHero.getSprite().setViewport(new Rectangle2D(myHero.getHindX(), myHero.getHindY(), 75, 100));
     }
 
@@ -56,11 +59,24 @@ public class GameScene extends Scene {
             myHero.jump();
         });
 
-
+        // background
         g.getChildren().addAll(left.getImV());
         g.getChildren().addAll(right.getImV());
+
+        //hero
         myHero.getSprite().setViewport(new Rectangle2D(myHero.getHindX(), myHero.getHindY(), 75, 100));
         g.getChildren().addAll(myHero.getSprite());
+
+        //life bare
+        life1.getImV().setX(460);
+        life1.getImV().setY(20);
+        g.getChildren().add(life1.getImV());
+        life2.getImV().setX(500);
+        life2.getImV().setY(20);
+        g.getChildren().add(life2.getImV());
+        life3.getImV().setX(540);
+        life3.getImV().setY(20);
+        g.getChildren().add(life3.getImV());
 
 
 

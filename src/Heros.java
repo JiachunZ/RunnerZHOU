@@ -13,6 +13,7 @@ public class Heros /*extends AnimatedThing */{
     private static Image spriteSheet = new Image("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\heros.png");
     private static long timeAv;
 
+
     /***************** constructeur *************************************************/
 
     public Heros (double x, double y,int width,int height,double indX,double indY,double maxIndX){
@@ -64,47 +65,29 @@ public class Heros /*extends AnimatedThing */{
             }
 
         } else if (maxIndX == 310){
-            if ((time-getTimeAv())>100000000){
-
-                if (x1 < 170) {
-                    x1 = x1 + 85;
-                    this.setHx(this.getHx() + 3);
-                    this.setHindX(x1);
-                    this.setHy(this.getHy()-25);
-                    this.sprite.setY(this.getHy());
-                } else if(x1<maxIndX && 170<x1){
-                    x1 = x1+85;
+            //if ((time-getTimeAv())>15000000) {
+                if (this.getHy()>150 && this.getHindX()==10 && this.getHindY()!=0){
                     this.setHx(this.getHx()+3);
-                    this.setHindX(x1);
-                    this.setHy(this.getHy()+25);
+                    this.setHy(this.getHy()-2);
                     this.sprite.setY(this.getHy());
-                } else if (x1>maxIndX){
-                //} else{
-                    x1 = 10;
+                    if (this.getHy()==152){
+                        this.setHindX(180);
+                    }
+                } else if (this.getHy()<250 && this.getHindX()==180 && this.getHindY()!=0){
                     this.setHx(this.getHx()+3);
-                    this.setHindX(x1);
-                    this.setMaxIndX(460);
-                    this.setHindY(0);
-                    this.setHy(250);
+                    this.setHy(this.getHy()+2);
                     this.sprite.setY(this.getHy());
+                    if (this.getHy()==248){
+                        this.setHy(250);
+                        this.setHindX(10);
+                        this.setHindY(0);
+                        this.setMaxIndX(460);
+                    }
                 }
-                this.setTimeAv(time);
-            } else{
-                if (x1 < maxIndX) {
-                    x1 = x1;
-                    this.setHx(this.getHx() + 3);
-                    this.setHindX(x1);
-
-                } else {
-                    x1 = 10;
-                    this.setHx(this.getHx()+3);
-                    this.setHindX(x1);
-                    this.setMaxIndX(460);
-                    this.setHindY(0);
-                    this.setHy(this.getHy()+25);
-                    this.sprite.setY(this.getHy());
-                }
-            }
+                //this.setTimeAv(time);
+            //} else{
+               //this.setHx(this.getHx()+3);
+            //}
         }
     }
 
@@ -119,9 +102,9 @@ public class Heros /*extends AnimatedThing */{
 
         if (indY<150 ) {
 
-            //this.setHx(x+3);
+            this.setHx(x+3);
             this.setHindX(indX);
-            this.setHy(y-25);
+            this.setHy(y-2);
             this.setHindY(indY + 160);
 
             this.setMaxIndX(310);

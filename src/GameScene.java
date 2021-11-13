@@ -12,6 +12,7 @@ public class GameScene extends Scene {
     private static staticThing life1 = new staticThing ("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\heart.png",30,30);
     private static staticThing life2 = new staticThing ("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\heart.png",30,30);
     private static staticThing life3 = new staticThing ("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\heart.png",30,30);
+    private static staticThing cactus = new staticThing ("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\cactus2.png",0,0);
     private double sceneL;
     private static Heros myHero = new Heros (200,250,75,100,10,0,460);
 
@@ -77,6 +78,12 @@ public class GameScene extends Scene {
         life3.getImV().setX(540);
         life3.getImV().setY(20);
         g.getChildren().add(life3.getImV());
+
+
+        // cactus
+        cactus.getImV().setX(460);
+        cactus.getImV().setY(200);
+        g.getChildren().add(cactus.getImV());
 
 
 

@@ -10,7 +10,7 @@ public class Heros /*extends AnimatedThing */{
     private double indX;
     private double maxIndX;
     private ImageView sprite;
-    private static Image spriteSheet = new Image("C:\\Users\\jzb28\\IdeaProjects\\Runner\\img\\heros.png");
+    private static Image spriteSheet = new Image("\\img\\heros.png");
     private static long timeAv;
 
 
@@ -65,7 +65,7 @@ public class Heros /*extends AnimatedThing */{
             }
 
         } else if (maxIndX == 310){
-            //if ((time-getTimeAv())>15000000) {
+
                 if (this.getHy()>150 && this.getHindX()==10 && this.getHindY()!=0){
                     this.setHx(this.getHx()+3);
                     this.setHy(this.getHy()-2);
@@ -84,10 +84,6 @@ public class Heros /*extends AnimatedThing */{
                         this.setMaxIndX(460);
                     }
                 }
-                //this.setTimeAv(time);
-            //} else{
-               //this.setHx(this.getHx()+3);
-            //}
         }
     }
 

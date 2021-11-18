@@ -40,6 +40,7 @@ public class Heros /*extends AnimatedThing */{
         double x1 = this.getHindX();
         double maxIndX = this.getMaxIndX();
 
+        // courir normalement
         if (maxIndX == 460){
             if ((time-getTimeAv())>66000000){  //66000000
                 if (x1 < maxIndX) {
@@ -64,6 +65,8 @@ public class Heros /*extends AnimatedThing */{
                 }
             }
 
+
+        //sauter
         } else if (maxIndX == 310){
 
                 if (this.getHy()>150 && this.getHindX()==10 && this.getHindY()!=0){

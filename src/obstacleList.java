@@ -10,6 +10,15 @@ public class obstacleList {
     }
 
 
+
+    /***************** getter *************************************************/
+    public double getN(){return n;}
+
+    /***************** setter *************************************************/
+    public void setN(double n){this.n=n;}
+
+
+    /***************** autres méthodes *************************************************/
     public void addObstacle(Obstacle obs) {
         list.add(obs);
     }
@@ -22,9 +31,6 @@ public class obstacleList {
             addObstacle(obs);
         }
     }
-
-    public double getN(){return n;}
-    public void setN(double n){this.n=n;}
 
     public Obstacle findObstacle(double i) {
         for (Obstacle obs : list) {
@@ -42,6 +48,9 @@ public class obstacleList {
         }
     }
 
+
+
+    /***************** mise à jour *************************************************/
     void update (){
         GameScene.setObstacleList();
         this.setN(this.getN()+1);

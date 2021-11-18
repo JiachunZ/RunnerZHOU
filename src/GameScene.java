@@ -10,18 +10,13 @@ public class GameScene extends Scene {
     private double sceneL;
     private static staticThing left= new staticThing("\\img\\desert.png",0,0);
     private static staticThing right= new staticThing("\\img\\desert.png",800,0);
-    private static Heros myHero = new Heros (130,250,75,100,10,0,460);
-    private static Obstacle obstacle = new Obstacle(550,285,98,82,"\\img\\obstacle.png",0,myHero);
+    private static Heros myHero = new Heros (135,250,75,100,10,0,460);
+    private static Obstacle obstacle = new Obstacle(540,285,98,82,"\\img\\obstacle.png",0,myHero);
     private static obstacleList list = new obstacleList(3);
+    private static Life life = new Life(460,30,111,30,"\\img\\life.png",0,myHero,obstacle);
 
 
     /***************** getter *************************************************/
-
-    public staticThing getLeft(){
-        return left;
-    }
-    public double getSceneL(){ return sceneL;}
-
 
 
 
@@ -56,6 +51,11 @@ public class GameScene extends Scene {
         list.addObstacleImage(list);
     }
 
+    public static void setLife(){
+        life.getAimV().setX(life.getAx());
+        life.getAimV().setY(life.getAy());
+    }
+
 
     /***************** Constructeur *************************************************/
 
@@ -65,28 +65,30 @@ public class GameScene extends Scene {
         this.sceneL = sceneL;
 
         timer.start();
+
         this.setOnMouseClicked((event)->{
             System.out.println("Jump");
             myHero.jump();
         });
 
+
         // background
         g.getChildren().addAll(left.getImV());
         g.getChildren().addAll(right.getImV());
 
-
         //obstacle
         g.getChildren().addAll(obstacle.getAimV());
-
 
         //hero
         myHero.getSprite().setViewport(new Rectangle2D(myHero.getHindX(), myHero.getHindY(), 75, 100));
         g.getChildren().addAll(myHero.getSprite());
 
+        //lifebare
+        g.getChildren().addAll(life.getAimV());
 
-
-
-
+        if (life.getEtat()==3){
+            timer.stop();
+        }
 
     }
 
@@ -103,6 +105,9 @@ public class GameScene extends Scene {
             left.update();
             myHero.update(time);
             obstacle.update();
+            life.update();
+            System.out.println("x hero : "+ myHero.getHx());
+            System.out.println("x obs : "+ obstacle.getAx());
         }
     };
 

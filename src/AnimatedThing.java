@@ -50,6 +50,10 @@ public class AnimatedThing {
     public void setAy(double y) {
         this.y = y;
     }
+    public void setAimV(String chemin){
+        this.spriteSheet=new Image (chemin);
+        this.imV= new ImageView(spriteSheet);
+    }
 
 
 }

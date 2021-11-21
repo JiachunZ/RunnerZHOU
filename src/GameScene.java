@@ -14,6 +14,7 @@ public class GameScene extends Scene {
     private static Obstacle obstacle = new Obstacle(540,285,98,82,"\\img\\obstacle.png",0,myHero);
     private static obstacleList list = new obstacleList(3);
     private static Life life = new Life(460,30,111,30,"\\img\\life.png",0,myHero,obstacle);
+    private static GameOver gameover = new GameOver(460,30,111,30,"\\img\\gameover.png",life);
 
 
     /***************** getter *************************************************/
@@ -56,6 +57,11 @@ public class GameScene extends Scene {
         life.getAimV().setY(life.getAy());
     }
 
+    public static void setGameOver(double x,double y){
+        gameover.getAimV().setX(x);
+        gameover.getAimV().setY(y);
+    }
+
 
     /***************** Constructeur *************************************************/
 
@@ -86,6 +92,9 @@ public class GameScene extends Scene {
         //lifebare
         g.getChildren().addAll(life.getAimV());
 
+        //gameover
+        g.getChildren().addAll(gameover.getAimV());
+
     }
 
 
@@ -102,9 +111,10 @@ public class GameScene extends Scene {
             myHero.update(time);
             obstacle.update();
             life.update();
-            //System.out.println("x hero : "+ myHero.getHx());
-            //System.out.println("x obs : "+ obstacle.getAx());
-            if (life.getEtat()==3){
+            gameover.update();
+            System.out.println("life etat : "+ life.getEtat());
+            System.out.println("gameover : "+ gameover.getFin());
+            if (life.getEtat()==3) {
                 timer.stop();
             }
         }

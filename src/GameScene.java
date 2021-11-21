@@ -86,10 +86,6 @@ public class GameScene extends Scene {
         //lifebare
         g.getChildren().addAll(life.getAimV());
 
-        if (life.getEtat()==3){
-            timer.stop();
-        }
-
     }
 
 
@@ -106,8 +102,11 @@ public class GameScene extends Scene {
             myHero.update(time);
             obstacle.update();
             life.update();
-            System.out.println("x hero : "+ myHero.getHx());
-            System.out.println("x obs : "+ obstacle.getAx());
+            //System.out.println("x hero : "+ myHero.getHx());
+            //System.out.println("x obs : "+ obstacle.getAx());
+            if (life.getEtat()==3){
+                timer.stop();
+            }
         }
     };
 

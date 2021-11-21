@@ -3,12 +3,12 @@ public class Camera {
     private double y;
 
 
-    public double getCAMx() {
+    /*public double getCAMx() {
         return x;
     }
     public double getCAMy(){
         return y;
-    }
+    }*/
 
     public Camera (double x, double y){
         this.x=x;

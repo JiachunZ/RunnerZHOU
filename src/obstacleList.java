@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+//Je n'ai pas pu utiliser cette liste dans mon projet
+
 public class obstacleList {
     private ArrayList<Obstacle> list=null;
     double n;

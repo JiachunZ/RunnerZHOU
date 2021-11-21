@@ -37,8 +37,8 @@ public class AnimatedThing {
     public double getAy() {
         return y;
     }
-    public int getWidth(){ return width;}
-    public int getHeight(){return height;}
+    //public int getWidth(){ return width;}
+    //public int getHeight(){return height;}
     public ImageView getAimV() {
         return imV;
     }
@@ -47,13 +47,7 @@ public class AnimatedThing {
     public void setAx(double x) {
         this.x = x;
     }
-    public void setAy(double y) {
-        this.y = y;
-    }
-    public void setAimV(String chemin){
-        this.spriteSheet=new Image (chemin);
-        this.imV= new ImageView(spriteSheet);
-    }
+    //public void setAy(double y) {this.y = y;}
 
 
 }

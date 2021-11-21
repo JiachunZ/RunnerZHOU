@@ -112,8 +112,6 @@ public class GameScene extends Scene {
             obstacle.update();
             life.update();
             gameover.update();
-            System.out.println("life etat : "+ life.getEtat());
-            System.out.println("gameover : "+ gameover.getFin());
             if (life.getEtat()==3) {
                 timer.stop();
             }

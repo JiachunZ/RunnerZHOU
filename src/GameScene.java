@@ -2,7 +2,6 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.image.Image;
 
 
 public class GameScene extends Scene {
